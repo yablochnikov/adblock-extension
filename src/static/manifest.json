@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Adblock Extension",
   "description": "Simple adblock extension",
   "version": "1.0.0",
@@ -18,12 +18,14 @@
       "js": ["contentScript.js"]
     }
   ],
-  "permissions": [
-    "webRequest",
-    "webRequestBlocking",
-    "*://googleadservices.com/*",
-    "*://.tpc.googlesyndication.com/*",
-    "*://.safeframe.googlesyndication.com/*",
-    "<all_urls>"
-  ]
+  "permissions": ["declarativeNetRequest"],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "block_ads",
+        "enabled": true,
+        "path": "block_ads.json"
+      }
+    ]
+  }
 }
